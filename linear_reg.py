@@ -63,7 +63,7 @@ def predict(X, params):
     return y_pred
 
 
-def linear_cross_validation(data, k, randomize=True):   
+def cross_validation(data, k, randomize=True):   
     from sklearn.utils import shuffle
     if randomize:
         data = list(data)
@@ -133,7 +133,7 @@ data = np.concatenate((X.reshape(-1,1), y.reshape(-1,1)), axis=1)
 print(data.shape)
 
 r_square_list = []
-for train, validation in linear_cross_validation(data, 5):
+for train, validation in cross_validation(data, 5):
     X_train = train[:, :-1].reshape(-1,1)
     y_train = train[:, -1].reshape((-1, 1))
     X_valid = validation[:, :-1].reshape(-1,1)

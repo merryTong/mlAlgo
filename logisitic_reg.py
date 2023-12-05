@@ -101,7 +101,7 @@ def plot_logistic(X_train, y_train, params):
     plt.ylabel('X2')
     plt.show()
 
-def linear_cross_validation(data, k, randomize=True):   
+def cross_validation(data, k, randomize=True):   
     from sklearn.utils import shuffle
     if randomize:
         data = list(data)
@@ -163,7 +163,7 @@ data = np.concatenate((X, labels.reshape(-1,1)), axis=1)
 print(data.shape)
 
 acc_list = []
-for train, validation in linear_cross_validation(data, 5):
+for train, validation in cross_validation(data, 5):
     X_train = train[:, :-1]
     y_train = train[:, -1].reshape((-1, 1))
     X_valid = validation[:, :-1]
